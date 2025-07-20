@@ -1,0 +1,582 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@mixin text($size, $weight, $color) {
+    font-family: 'Poppins', sans-serif !important;
+    font-size: $size;
+    font-weight: $weight;
+    color: $color;
+}
+
+
+
+.head {
+    @include text(40px, 300, #000);
+    margin-bottom: 40px;
+    line-height: 60px;
+
+    @media (max-width: 575.98px) {
+        @include text(30px, 300, #000);
+        line-height: 45px;
+
+    }
+}
+
+.subhead {
+    @include text(16px, 300, #8f8f8f);
+    margin-bottom: 20px;
+}
+
+.text {
+    @include text(16, 300, #000);
+    line-height: 30px;
+}
+
+.navbar {
+    .nav-link {
+        color: #000;
+        mix-blend-mode: difference;
+    }
+}
+
+.btn.btn-yellow {
+    @include text(16px, 400, #000);
+    background: #bbef30;
+    padding: 16px;
+    transition: background 0.3s;
+
+    &:hover {
+        background: darken(#bbef30, 10%);
+    }
+}
+
+.hero,
+.contact {
+    background: #000;
+
+    .container {
+        z-index: 2;
+    }
+
+    .content {
+        padding-bottom: 100px;
+
+        h1 {
+            @include text(50px, 300, #fff);
+            letter-spacing: 1px;
+            line-height: 1.5;
+
+            @media (max-width: 575.98px) {
+                @include text(40px, 300, #fff);
+            }
+        }
+
+
+    }
+}
+
+.marquee-item {
+    width: 250px;
+    padding: 15px;
+    flex-shrink: 0;
+    background: white;
+    border-radius: 10px;
+
+    img {
+        filter: grayscale(100%);
+        transition: filter 0.3s ease;
+
+        &:hover {
+            filter: grayscale(0%);
+        }
+    }
+}
+
+
+.services {
+    background: #000;
+
+    .services-title {
+        @include text(2.2em, 300, #000);
+
+        @media (max-width:575.98px) {
+            @include text(1.5em, 300, #000);
+        }
+    }
+
+    .services_module_wrapper,
+    .service-module {
+        position: relative;
+
+        .service-img {
+            opacity: 0;
+            position: absolute;
+
+            .service-img-main {
+                max-width: 30%;
+                height: auto;
+                position: relative;
+                top: -150px;
+            }
+        }
+
+        .heading {
+            opacity: .35;
+            margin-bottom: 30px;
+            @include text(3.5rem, 300, #000);
+        }
+
+        .arrow {
+            opacity: 0;
+            overflow: hidden;
+            transform: translate(-100%);
+            @include text(3.5rem, 300, #000);
+
+        }
+    }
+
+    .services_item_mobile {
+        @include text(1.5rem, 300, #000);
+    }
+
+    .content-text {
+        @include text(1.8em, 300, #000);
+        line-height: 70px;
+
+        @media (max-width:575.98px) {
+            @include text(1.5em, 300, #000);
+            line-height: 40px;
+        }
+    }
+}
+
+.case-study {
+
+    .names {
+        padding: 200px 0;
+
+        h4 {
+            @include text(1.5em, 300, #000);
+
+            .dash {
+                width: 10px;
+                height: 2px;
+                display: inline-block;
+                margin-left: 10px;
+                transition: width 0.6s ease;
+            }
+
+            .cas-name {
+                padding-left: 10px;
+            }
+        }
+
+        .case-head {
+            &_1 {
+                .cas-name {
+                    color: #316736;
+                }
+
+                .dash {
+                    background: #316736;
+                }
+            }
+
+            &_2 {
+                .cas-name {
+                    color: #9a4149;
+                }
+
+                .dash {
+                    background: #9a4149;
+                }
+            }
+
+            &_3 {
+                .cas-name {
+                    color: #0f456e;
+                }
+
+                .dash {
+                    background: #0f456e;
+                }
+            }
+
+            &_4 {
+                .cas-name {
+                    color: #433267;
+                }
+
+                .dash {
+                    background: #433267;
+                }
+            }
+
+
+            filter: grayscale(100%);
+        }
+    }
+}
+
+.services-process {
+    position: relative;
+
+    .process-timeline {
+        position: relative;
+
+        // Main vertical timeline line (centered on desktop)
+        &::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom,
+                    transparent 0%,
+                    #e0e0e0 10%,
+                    #e0e0e0 90%,
+                    transparent 100%);
+            z-index: 1;
+
+            @media (max-width: 575.98px) {
+                left: 14px;
+                transform: none;
+                width: 2px;
+            }
+        }
+
+        // Animated timeline progress line
+        &::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0;
+            width: 3px;
+            height: 0%;
+            background: linear-gradient(to bottom, #16a34a, #15803d, #166534);
+            z-index: 2;
+            transform-origin: top;
+            transition: height 0.3s ease;
+
+            @media (max-width: 575.98px) {
+                left: 14px;
+                transform: none;
+                width: 2px;
+            }
+        }
+    }
+
+    .process-step {
+        position: relative;
+        margin-bottom: 4rem;
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+        width: 100%;
+        margin: 22px;
+        z-index: 10;
+
+        @media (max-width: 575.98px) {
+            margin: 22px 0;
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        &.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        // Desktop: Alternating left-right layout
+        @media (min-width: 769px) {
+            display: flex;
+            align-items: center;
+
+            // Even steps (2nd, 4th, 6th) - Right side
+            &:nth-child(even) {
+                .process-content {
+                    &::before {
+                        left: auto;
+                        right: -40px;
+                        background: linear-gradient(to right,
+                                #22c55e,
+                                rgba(34, 197, 94, 0.3));
+                    }
+
+                    // Timeline dot
+                    &::after {
+                        left: auto;
+                        right: -52px;
+                    }
+                }
+            }
+
+            // Odd steps (1st, 3rd, 5th) - Left side
+            &:nth-child(odd) {
+                flex-direction: row-reverse;
+
+                .process-content {
+                    // margin-left: 60px;
+                    margin-right: 44px;
+                }
+            }
+        }
+
+        .process-content {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 16px;
+            padding: 2rem;
+            position: relative;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            width: 45%;
+
+            @media (max-width: 575.98px) {
+                width: calc(100% - 60px);
+                margin-left: 60px !important;
+                margin-right: 0 !important;
+            }
+
+            &:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 20px 40px rgba(34, 197, 94, 0.1);
+                border-color: #16a34a;
+            }
+
+            // Connector line from timeline to content
+            &::before {
+                content: "";
+                position: absolute;
+                top: 30px;
+                width: 40px;
+                height: 2px;
+                background: linear-gradient(to right, #22c55e, rgba(34, 197, 94, 0.3));
+                z-index: 0;
+
+                // Default: left side positioning
+                left: -40px;
+
+                @media (max-width: 575.98px) {
+                    left: -40px;
+                    width: 40px;
+                    background: linear-gradient(to right,
+                            #16a34a,
+                            rgba(22, 163, 74, 0.3));
+                }
+            }
+
+            // Timeline dot
+            &::after {
+                content: "";
+                position: absolute;
+                top: 22px;
+                width: 16px;
+                height: 16px;
+                background: linear-gradient(135deg, #16a34a, #15803d);
+                border-radius: 50%;
+                border: 3px solid #fffef8;
+                z-index: 10;
+                box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.2);
+                transition: all 0.3s ease;
+
+                // Default: left side positioning
+                left: -52px;
+
+                @media (max-width: 575.98px) {
+                    left: -52px;
+                    width: 12px;
+                    height: 12px;
+                    border-width: 2px;
+                }
+            }
+        }
+
+        .process-info {
+            flex: 1;
+        }
+
+        .process-step-title {
+            @include text(1.5rem, 700, #1a1a1a);
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+
+            @media (max-width: 575.98px) {
+                font-size: 1.25rem;
+            }
+        }
+
+        .process-step-description {
+            @include text(1rem, 400, #666666);
+            margin-bottom: 0;
+            line-height: 1.6;
+
+            small {
+                @include text(0.85rem, 400, #888888);
+                display: block;
+                margin-top: 0.5rem;
+                font-style: italic;
+                line-height: 1.4;
+            }
+        }
+
+        // Hover effect for timeline dot
+        &:hover .process-content::after {
+            transform: scale(1.2);
+            box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.3);
+        }
+
+        // Staggered animation delays
+        &:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+
+        &:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+
+        &:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+
+        &:nth-child(4) {
+            transition-delay: 0.4s;
+        }
+
+        &:nth-child(5) {
+            transition-delay: 0.5s;
+        }
+
+        &:nth-child(6) {
+            transition-delay: 0.6s;
+        }
+    }
+}
+
+.why-us {
+
+    h5 {
+        color: #000;
+        line-height: 34px;
+    }
+
+
+    .service-card {
+        background: #F6F6F6;
+        transition: all 0.3s;
+
+        &:hover {
+            background-color: #000;
+
+            img {
+                filter: invert(1);
+            }
+
+            .card-title,
+            .card-text {
+                color: #fff;
+            }
+        }
+
+        .card-title {
+            @include text(28px, 600, #000);
+            line-height: 42px;
+            letter-spacing: 1px;
+
+            @media (max-width: 575.98px) {
+                @include text(22px, 600, #000);
+                letter-spacing: normal;
+            }
+        }
+    }
+}
+
+
+.faq {
+    .accordion-button {
+        background: #fff;
+        box-shadow: none;
+
+        &:not(.collapsed) {
+            color: #1e874c !important;
+        }
+
+        // Remove default arrow
+        &::after {
+            display: none;
+        }
+
+        // Add custom plus/minus
+        &::before {
+            content: '+';
+            position: absolute;
+            right: 1.25rem;
+            font-size: 1.5rem;
+            font-weight: 300;
+            transition: transform 0.2s ease-in-out;
+            line-height: 1;
+        }
+
+        // Rotate and change to minus when expanded
+        &:not(.collapsed) {
+            color: #1e874c !important;
+            background: #fff;
+            box-shadow: none;
+
+            &::before {
+                transform: rotate(45deg);
+            }
+        }
+    }
+}
+
+.contact {
+    .form-control {
+        @include text(16px, 300, #fff);
+        background: transparent;
+        border-radius: 0px;
+        margin-bottom: 40px;
+        border: none;
+        border-bottom: 1px solid #fff;
+
+        &:focus {
+            border-color: #bbef30;
+            background: transparent;
+            outline: none;
+            box-shadow: none;
+            color: #fff;
+        }
+
+        &::placeholder {
+            color: #fff;
+            @include text(16px, 300, #fff);
+        }
+    }
+}
+
+.btn.btn-black {
+    @include text(16px, 400, #000);
+    background: transparent;
+    padding: 12px 30px;
+    transition: background 0.3s;
+    border: 1px solid #000;
+
+    &:hover {
+        background: #bbef30;
+        border: 1px solid #000;
+
+    }
+}
+
+footer {
+    a:hover {
+        color: #1e874c !important;
+    }
+}
