@@ -6,6 +6,67 @@ const lenis = new Lenis({
 // Register plugins first
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
+
+// Function to initialize navbar scroll behavior
+document.addEventListener('DOMContentLoaded', function () {
+    const nav = document.querySelector('.navbar');
+    if (!nav) return;
+
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                const currentScrollY = window.scrollY;
+                const isSmallScreen = window.innerWidth < 768;
+
+                if (isSmallScreen) {
+                    // Small screens: NO animation, NO scrolled class - pure Bootstrap
+                    // Do nothing - let Bootstrap handle everything
+                } else {
+                    // Large screens: original animation + scrolled class
+                    if (currentScrollY > 50) {
+                        nav.classList.add('scrolled');
+                    } else {
+                        nav.classList.remove('scrolled');
+                    }
+
+                    if (currentScrollY > 10) {
+                        if (currentScrollY > lastScrollY + 10) {
+                            // Scrolling down - hide navbar
+                            gsap.to(nav, {
+                                y: "-100%",
+                                duration: 0.3,
+                                ease: "power2.out"
+                            });
+                        } else if (currentScrollY < lastScrollY - 10) {
+                            // Scrolling up - show navbar
+                            gsap.to(nav, {
+                                y: "0%",
+                                duration: 0.3,
+                                ease: "power2.out"
+                            });
+                        }
+                    } else {
+                        // At top of page - always show navbar
+                        gsap.to(nav, {
+                            y: "0%",
+                            duration: 0.3,
+                            ease: "power2.out"
+                        });
+                    }
+                }
+
+                lastScrollY = currentScrollY;
+                ticking = false;
+            });
+
+            ticking = true;
+        }
+    });
+});
+
 // Marquee Animation - Window Load
 window.addEventListener("load", function () {
     const marquee = gsap.to(".marquee-item", {
