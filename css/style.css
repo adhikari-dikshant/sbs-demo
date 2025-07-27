@@ -38,11 +38,13 @@
   transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
   transition: background-color 0.3s ease, backdrop-filter 0.3s ease, -webkit-backdrop-filter 0.3s ease;
 }
-.navbar .nav-link {
+.navbar .nav-link,
+.navbar .navbar-brand {
   color: #fff;
 }
-@media screen {
-  .navbar .nav-link {
+@media (max-width: 575.98px) {
+  .navbar .nav-link,
+  .navbar .navbar-brand {
     color: #000;
   }
 }
@@ -50,13 +52,21 @@
   background-image: url('data:image/svg+xml,%3csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"%3e%3cpath stroke="rgba(255, 255, 255, 0.75)" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"/%3e%3c/svg%3e');
 }
 .navbar.scrolled {
-  background-color: rgba(49, 103, 54, 0.9) !important;
+  background-color: rgba(187, 239, 48, 0.9) !important;
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
 }
+.navbar.scrolled .nav-link,
+.navbar.scrolled .navbar-brand {
+  color: #000 !important;
+}
 @media (max-width: 767.98px) {
   .navbar {
-    background-color: rgb(49, 103, 54) !important;
+    background-color: rgba(187, 239, 48, 0.9) !important;
+  }
+  .navbar .nav-link,
+  .navbar .navbar-brand {
+    color: #000 !important;
   }
 }
 
